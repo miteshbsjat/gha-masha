@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@master
       - name: Self test
         id: selftest
-        uses: miteshbsjat/gha-masha@v1
+        uses: miteshbsjat/gha-masha@main
         with:
           variables: '/app/test/config-a.yaml,/app/test/config-b.yaml'
           model-file: /app/test/model.py

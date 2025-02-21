@@ -40,7 +40,7 @@ runs:
   image: Dockerfile
   env:
     INPUT_VARIABLES: ${{ inputs.variables }}
-    INPUT_MODEL_FILE: ${{ inputs.model-class }}
+    INPUT_MODEL_FILE: ${{ inputs.model-file }}
     INPUT_CLASS_MODEL: ${{ inputs.class-model }}
     INPUT_TEMPLATE_FILTERS_DIRECTORY: ${{ inputs.template-filters-directory }}
     INPUT_TEMPLATE_TESTS_DIRECTORY: ${{ inputs.template-tests-directory }}
