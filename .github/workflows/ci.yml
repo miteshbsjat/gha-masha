@@ -90,4 +90,4 @@ jobs:
         id: output
         run: |
           echo "exit_code = ${{ steps.test-action.outputs.exit_code }}"; \
-            echo "exit_message = ${{ steps.test-action.outputs.exit_code }}"
+            echo "exit_message = ${{ steps.test-action.outputs.exit_message }}"
