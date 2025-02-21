@@ -47,10 +47,14 @@ jobs:
       - name: Run the Container
         id: run
         env:
-          INPUT_WHO_TO_GREET: Mona Lisa Octocat
+          INPUT_VARIABLES: '/app/demo.yaml,/tmp/demo2.json,hello.toml'
+          INPUT_OUTPUT: /app/output.txt
+          INPUT_INPUT_FILE: /app/input.txt
         run: |
           docker run \
-            --env INPUT_WHO_TO_GREET="${{ env.INPUT_WHO_TO_GREET }}" \
+            --env INPUT_VARIABLES="${{ env.INPUT_VARIABLES }}" \
+            --env INPUT_OUTPUT="${{ env.INPUT_OUTPUT }}" \
+            --env INPUT_INPUT_FILE="${{ env.INPUT_INPUT_FILE }}" \
             --rm ${{ env.TEST_TAG }}
 
   test-action:

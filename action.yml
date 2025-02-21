@@ -1,21 +1,32 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'GitHub Action for Masha'
+description:
+  'MASHA: MASHup of Configuration Loading from several file types and run yAsha
+  like Jinja2 template rendition with Validation.'
+author: 'Mitesh Singh Jat'
 
 # Define your inputs here.
 inputs:
-  who-to-greet:
-    description: 'Your input description here'
+  variables:
+    description: 'Comma Separated List of Configuration Files'
     required: true
-    default: 'World'
+  output:
+    description: 'Output file where the output will be rendered'
+    required: true
+  input-file:
+    description: 'Input File having Jinja2 Templates'
+    required: true
 
 # Define your outputs here.
 outputs:
-  greeting:
-    description: 'Your output description here'
+  exit_code:
+    description: 'Exit Code of the masha command'
+  exit_message:
+    description: 'Exit Message of the masha command'
 
 runs:
   using: docker
   image: Dockerfile
   env:
-    INPUT_WHO_TO_GREET: ${{ inputs.who-to-greet }}
+    INPUT_VARIABLES: ${{ inputs.variables }}
+    INPUT_OUTPUT: ${{ inputs.output }}
+    INPUT_INPUT_FILE: ${{ inputs.input-file }}
