@@ -1,0 +1,21 @@
+name: Integration Test
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Self test
+        id: selftest
+        uses: miteshbsjat/gha-masha@main
+        with:
+          variables: '/app/test/config-a.yaml,/app/test/config-b.yaml'
+          model-file: /app/test/model.py
+          class-modeL: ConfigModel
+          template-filters-directory: /app/test/filters
+          template-tests-directory: /app/test/tests
+          output: /tmp/output.txt
+          input-file: /app/test/input.txt.j2
+      - name: Check outputs and modified files
+        run: |
+          test "${{ steps.selftest.outputs.exit_code }}" == "0"
