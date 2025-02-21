@@ -77,6 +77,14 @@ jobs:
       - name: Test Local Action
         id: test-action
         uses: ./
+        with:
+          variables: '/app/test/config-a.yaml,/app/test/config-b.yaml'
+          model-file: /app/test/model.py
+          class-modeL: ConfigModel
+          template-filters-directory: /app/test/filters
+          template-tests-directory: /app/test/tests
+          output: /tmp/output.txt
+          input-file: /app/test/input.txt.j2
 
       - name: Print Output
         id: output
