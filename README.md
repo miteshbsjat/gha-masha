@@ -218,7 +218,7 @@ steps:
       with:
         variables: '/app/test/config-a.yaml,/app/test/config-b.yaml'
         model-file: /app/test/model.py
-        class-modeL: ConfigModel
+        class-model: ConfigModel
         template-filters-directory: /app/test/filters
         template-tests-directory: /app/test/tests
         output: output.txt
