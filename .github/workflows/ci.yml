@@ -47,12 +47,20 @@ jobs:
       - name: Run the Container
         id: run
         env:
-          INPUT_VARIABLES: '/app/demo.yaml,/tmp/demo2.json,hello.toml'
-          INPUT_OUTPUT: /app/output.txt
-          INPUT_INPUT_FILE: /app/input.txt
+          INPUT_VARIABLES: '/app/masha/test/config-a.yaml,/app/masha/test/config-b.yaml'
+          INPUT_MODEL_FILE: /app/masha/test/model.py
+          INPUT_CLASS_MODEL: ConfigModel
+          INPUT_TEMPLATE_FILTERS_DIRECTORY: /app/masha/test/filters
+          INPUT_TEMPLATE_TESTS_DIRECTORY: /app/masha/test/test
+          INPUT_OUTPUT: /tmp/output.txt
+          INPUT_INPUT_FILE: /app/masha/test/input.txt.j2
         run: |
           docker run \
             --env INPUT_VARIABLES="${{ env.INPUT_VARIABLES }}" \
+            --env INPUT_MODEL_FILE="${{ env.INPUT_MODEL_FILE }}" \
+            --env INPUT_CLASS_MODEL="${{ env.INPUT_CLASS_MODEL }}" \
+            --env INPUT_TEMPLATE_FILTERS_DIRECTORY="${{ env.INPUT_TEMPLATE_FILTERS_DIRECTORY }}" \
+            --env INPUT_TEMPLATE_TESTS_DIRECTORY="${{ env.INPUT_TEMPLATE_TESTS_DIRECTORY }}" \
             --env INPUT_OUTPUT="${{ env.INPUT_OUTPUT }}" \
             --env INPUT_INPUT_FILE="${{ env.INPUT_INPUT_FILE }}" \
             --rm ${{ env.TEST_TAG }}
