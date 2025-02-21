@@ -51,7 +51,7 @@ jobs:
           INPUT_MODEL_FILE: /app/test/model.py
           INPUT_CLASS_MODEL: ConfigModel
           INPUT_TEMPLATE_FILTERS_DIRECTORY: /app/test/filters
-          INPUT_TEMPLATE_TESTS_DIRECTORY: /app/test/test
+          INPUT_TEMPLATE_TESTS_DIRECTORY: /app/test/tests
           INPUT_OUTPUT: /tmp/output.txt
           INPUT_INPUT_FILE: /app/test/input.txt.j2
         run: |
