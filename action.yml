@@ -12,6 +12,18 @@ inputs:
   output:
     description: 'Output file where the output will be rendered'
     required: true
+  model-file:
+    description: 'Python file with Pydantic Model Class'
+    required: false
+  class-model:
+    description: 'Pydantic Derived Class Name present in model-file'
+    required: false
+  template-filters-directory:
+    description: 'Directory containing filters functions python files'
+    required: false
+  template-tests-directory:
+    description: 'Directory containing tests functions python files'
+    required: false
   input-file:
     description: 'Input File having Jinja2 Templates'
     required: true
@@ -28,5 +40,9 @@ runs:
   image: Dockerfile
   env:
     INPUT_VARIABLES: ${{ inputs.variables }}
+    INPUT_MODEL_FILE: ${{ inputs.model-class }}
+    INPUT_CLASS_MODEL: ${{ inputs.class-model }}
+    INPUT_TEMPLATE_FILTERS_DIRECTORY: ${{ inputs.template-filters-directory }}
+    INPUT_TEMPLATE_TESTS_DIRECTORY: ${{ inputs.template-tests-directory }}
     INPUT_OUTPUT: ${{ inputs.output }}
     INPUT_INPUT_FILE: ${{ inputs.input-file }}

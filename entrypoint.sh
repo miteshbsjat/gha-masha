@@ -16,8 +16,24 @@ if [ -z "$INPUT_VARIABLES" ]; then on_err 1 "INPUT_VARIABLES is not set"; fi
 variables=$(echo "-v $INPUT_VARIABLES" | sed 's/,/ -v /g')
 cmd="$cmd $variables"
 
+if [ ! -z "$INPUT_MODEL_FILE" ]; then 
+  cmd="$cmd -m $INPUT_MODEL_FILE"
+fi
+
+if [ ! -z "$INPUT_CLASS_MODEL" ]; then 
+  cmd="$cmd -c $INPUT_CLASS_MODEL"
+fi
+
+if [ ! -z "$INPUT_TEMPLATE_FILTERS_DIRECTORY" ]; then 
+  cmd="$cmd -f $INPUT_TEMPLATE_FILTERS_DIRECTORY"
+fi
+
+if [ ! -z "$INPUT_TEMPLATE_TESTS_DIRECTORY" ]; then 
+  cmd="$cmd -t $INPUT_TEMPLATE_TESTS_DIRECTORY"
+fi
+
 if [ -z "$INPUT_OUTPUT" ]; then on_err 1 "INPUT_OUTPUT is not set"; fi 
-cmd="$cmd $INPUT_OUTPUT"
+cmd="$cmd -o $INPUT_OUTPUT"
 
 if [ -z "$INPUT_INPUT_FILE" ]; then on_err 1 "INPUT_INPUT_FILE is not set"; fi 
 cmd="$cmd $INPUT_INPUT_FILE"
