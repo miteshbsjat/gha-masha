@@ -47,13 +47,13 @@ jobs:
       - name: Run the Container
         id: run
         env:
-          INPUT_VARIABLES: '/app/masha/test/config-a.yaml,/app/masha/test/config-b.yaml'
-          INPUT_MODEL_FILE: /app/masha/test/model.py
+          INPUT_VARIABLES: '/app/test/config-a.yaml,/app/test/config-b.yaml'
+          INPUT_MODEL_FILE: /app/test/model.py
           INPUT_CLASS_MODEL: ConfigModel
-          INPUT_TEMPLATE_FILTERS_DIRECTORY: /app/masha/test/filters
-          INPUT_TEMPLATE_TESTS_DIRECTORY: /app/masha/test/test
+          INPUT_TEMPLATE_FILTERS_DIRECTORY: /app/test/filters
+          INPUT_TEMPLATE_TESTS_DIRECTORY: /app/test/test
           INPUT_OUTPUT: /tmp/output.txt
-          INPUT_INPUT_FILE: /app/masha/test/input.txt.j2
+          INPUT_INPUT_FILE: /app/test/input.txt.j2
         run: |
           docker run \
             --env INPUT_VARIABLES="${{ env.INPUT_VARIABLES }}" \
