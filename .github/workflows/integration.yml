@@ -19,3 +19,6 @@ jobs:
       - name: Check outputs and modified files
         run: |
           test "${{ steps.selftest.outputs.exit_code }}" == "0"
+      - name: Get output file
+        run: |
+          cat /tmp/output.txt
