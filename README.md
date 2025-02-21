@@ -214,11 +214,19 @@ steps:
 
   - name: Test Local Action
     id: test-action
-    uses: actions/container-action@v1 # Commit with the `v1` tag
-    with:
-      who-to-greet: Mona Lisa Octocat
-
-  - name: Print Output
-    id: output
-    run: echo "${{ steps.test-action.outputs.greeting }}"
+    uses: miteshbsjat/gha-masha@main
+      with:
+        variables: '/app/test/config-a.yaml,/app/test/config-b.yaml'
+        model-file: /app/test/model.py
+        class-modeL: ConfigModel
+        template-filters-directory: /app/test/filters
+        template-tests-directory: /app/test/tests
+        output: output.txt
+        input-file: /app/test/input.txt.j2
+  - name: Check outputs and modified files
+    run: |
+      test "${{ steps.selftest.outputs.exit_code }}" == "0"
+  - name: Get output file
+    run: |
+      cat output.txt
 ```
