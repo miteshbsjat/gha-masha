@@ -14,11 +14,11 @@ jobs:
           class-modeL: ConfigModel
           template-filters-directory: /app/test/filters
           template-tests-directory: /app/test/tests
-          output: /tmp/output.txt
+          output: output.txt
           input-file: /app/test/input.txt.j2
       - name: Check outputs and modified files
         run: |
           test "${{ steps.selftest.outputs.exit_code }}" == "0"
       - name: Get output file
         run: |
-          cat /tmp/output.txt
+          cat output.txt
