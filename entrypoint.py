@@ -71,7 +71,7 @@ def process_directory(input_dir, output_dir, cmd_base):
                 process_file(input_file, output_dir, cmd_base)
 
 # Define the base command
-cmd_base = ["/usr/bin/echo", "/app/bin/masha"]
+cmd_base = ["/app/bin/masha"]
 
 # Check and append variables
 input_variables = os.environ.get('INPUT_VARIABLES', None)
