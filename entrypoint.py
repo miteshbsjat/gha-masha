@@ -4,9 +4,8 @@ import sys
 import subprocess
 
 def on_err(exit_code, exit_message):
-    with open(os.getenv('GITHUB_OUTPUT', '/tmp/masha.out'), 'a') as f:
-        f.write(f"::set-output name=exit_code::{exit_code}\n")
-        f.write(f"::set-output name=exit_message::{exit_message}\n")
+    print(f"::set-output name=exit_code::{exit_code}")
+    print(f"::set-output name=exit_message::{exit_message}")
     sys.exit(exit_code)
 
 def get_parent_directory(file_path):
