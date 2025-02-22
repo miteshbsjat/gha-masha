@@ -214,7 +214,7 @@ steps:
 
   - name: Test Local Action
     id: test-action
-    uses: miteshbsjat/gha-masha@main
+    uses: miteshbsjat/gha-masha@vi
       with:
         variables: '/app/test/config-a.yaml,/app/test/config-b.yaml'
         model-file: /app/test/model.py
